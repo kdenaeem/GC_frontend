@@ -40,8 +40,9 @@ export default function MapChart() {
       });
       setMaxValue(sortedCities[0].population);
       setData(sortedCities);
+      console.log(data)
     });
-  }, []);
+  }, [data]);
 
   const popScale = useMemo(
     () => scaleLinear().domain([0, maxValue]).range([0, 24]),
@@ -51,8 +52,9 @@ export default function MapChart() {
 
 
   return (
-    <div>
-      <ComposableMap projectionConfig={{ rotate: [-10, 0, 0]}}>
+    <div style={{marginTop:"50px"}} className="map-container">
+      <ComposableMap projectionConfig={{ rotate: [-10, 0, 0]}} 
+      style={{width:"100%", height:"100%"}}>
         <ZoomableGroup
           zoom={position.zoom}
           center={position.coordinates}
